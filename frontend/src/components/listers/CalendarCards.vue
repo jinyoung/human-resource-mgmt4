@@ -69,7 +69,6 @@
             
             me.newValue = {
                 'userId': '',
-                'schedules': [],
             }
         },
         methods:{

@@ -67,7 +67,6 @@
             headers: 
                 [
                     { text: "userId", value: "userId" },
-                    { text: "schedules", value: "schedules" },
                 ],
             calendar : [],
             newValue: {},
@@ -86,7 +85,6 @@
 
             this.newValue = {
                 'userId': '',
-                'schedules': [],
             }
         },
         methods: {

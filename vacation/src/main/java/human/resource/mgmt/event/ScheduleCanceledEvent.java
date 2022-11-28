@@ -11,7 +11,6 @@ import lombok.ToString;
 @Data
 public class ScheduleCanceledEvent {
 
-    private Long id;
     private String title;
     private Date date;
 

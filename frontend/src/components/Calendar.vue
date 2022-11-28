@@ -18,7 +18,6 @@
 
         <v-card-text>
             <String label="UserId" v-model="value.userId" :editMode="editMode"/>
-            <ScheduleManager offline label="Schedules" v-model="value.schedules" :editMode="editMode" @change="change"/>
         </v-card-text>
 
         <v-card-actions>

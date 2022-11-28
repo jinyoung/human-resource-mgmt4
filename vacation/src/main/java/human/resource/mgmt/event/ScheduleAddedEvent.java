@@ -11,7 +11,6 @@ import lombok.ToString;
 @Data
 public class ScheduleAddedEvent {
 
-    private Long id;
     private String userId;
     private String title;
     private Date date;

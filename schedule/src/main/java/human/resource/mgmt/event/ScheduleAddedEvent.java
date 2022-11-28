@@ -12,7 +12,6 @@ import java.util.Date;
 @ToString
 public class ScheduleAddedEvent {
 
-    private Long id;
     private String userId;
     private String title;
     private Date date;

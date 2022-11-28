@@ -9,9 +9,11 @@ import lombok.ToString;
 
 @ToString
 @Data
-public class RegisterCommand {
+public class RegisterVacationCommand {
 
 
         private String userId;  // Please comment here if you want user to enter the id directly
-    
+        private String yearAndMonth;
+    private String scheduleData;
+
 }

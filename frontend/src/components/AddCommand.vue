@@ -6,7 +6,8 @@
         </v-card-title>
 
         <v-card-text>
-            <String label="Title" v-model="value.title" :editMode="editMode"/>
+            <Number label="DayCount" v-model="value.dayCount" :editMode="editMode"/>
+            <String label="Reason" v-model="value.reason" :editMode="editMode"/>
         </v-card-text>
 
         <v-card-actions>
@@ -42,7 +43,8 @@
             value: {},
         }),
         created() {
-            this.value.title = '';
+            this.value.dayCount = 0;
+            this.value.reason = '';
         },
         watch: {
         },
