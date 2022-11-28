@@ -41,12 +41,12 @@ public class VacationController {
       this.queryGateway = queryGateway;
   }
 
-  @RequestMapping(value = "/calendarReadModels",
+  @RequestMapping(value = "/vacations",
         method = RequestMethod.POST
       )
   public CompletableFuture registerVacation(@RequestBody RegisterVacationCommand registerVacationCommand)
         throws Exception {
-      System.out.println("##### /calendarReadModel/registerVacation  called #####");
+      System.out.println("##### /vacation/registerVacation  called #####");
 
       // send command
       return commandGateway.send(registerVacationCommand)            
@@ -55,11 +55,11 @@ public class VacationController {
                   VacationAggregate resource = new VacationAggregate();
                   BeanUtils.copyProperties(registerVacationCommand, resource);
 
-                  resource.set(()id);
+                  resource.setId((String)id);
                   
                   EntityModel<VacationAggregate> model = EntityModel.of(resource);
                   model
-                        .add(Link.of("/vacations/" + resource.get()).withSelfRel());
+                        .add(Link.of("/vacations/" + resource.getId()).withSelfRel());
 
                   return new ResponseEntity<>(model, HttpStatus.OK);
             }
