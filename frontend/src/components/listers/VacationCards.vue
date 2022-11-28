@@ -73,6 +73,7 @@
                 'reason': '',
                 'userId': '',
                 'days': 0,
+                'status': '',
             }
         },
         methods:{

@@ -22,6 +22,7 @@
             <String label="Reason" v-model="value.reason" :editMode="editMode"/>
             <String label="UserId" v-model="value.userId" :editMode="editMode"/>
             <Number label="Days" v-model="value.days" :editMode="editMode"/>
+            <String label="Status" v-model="value.status" :editMode="editMode"/>
         </v-card-text>
 
         <v-card-actions>
