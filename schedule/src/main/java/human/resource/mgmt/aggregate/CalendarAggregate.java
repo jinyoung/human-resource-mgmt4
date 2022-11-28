@@ -25,7 +25,7 @@ public class CalendarAggregate {
 
     @AggregateIdentifier
     private String userId;
-    private List&lt;Schedule&gt; schedules;
+   // private List<Schedule> schedules;
 
     public CalendarAggregate(){}
 
@@ -55,10 +55,10 @@ public class CalendarAggregate {
     public CalendarAggregate(RegisterCommand command){
 
         CalendarRegisteredEvent event = new CalendarRegisteredEvent();
-        BeanUtils.copyProperties(command, event);     
+        BeanUtils.copyProperties(command, event); 
 
-                //Please uncomment here and implement the createUUID method.
-        //event.setId(createUUID());
+        //Please uncomment here and implement the createUUID method.
+        event.setUserId(command.getUserId() + "_cal");
         
         apply(event);
 
