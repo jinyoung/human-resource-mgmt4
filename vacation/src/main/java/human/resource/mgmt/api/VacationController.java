@@ -4,6 +4,8 @@ import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.axonframework.queryhandling.QueryGateway;
 
 import org.axonframework.eventsourcing.eventstore.EventStore;
+import org.axonframework.messaging.responsetypes.ResponseType;
+import org.axonframework.messaging.responsetypes.ResponseTypes;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +31,8 @@ import java.util.ArrayList;
 
 import human.resource.mgmt.aggregate.*;
 import human.resource.mgmt.command.*;
+import human.resource.mgmt.query.CalendarReadModel;
+import human.resource.mgmt.query.CalendarReadModelSingleQuery;
 
 @RestController
 public class VacationController {
@@ -47,6 +51,14 @@ public class VacationController {
   public CompletableFuture registerVacation(@RequestBody RegisterVacationCommand registerVacationCommand)
         throws Exception {
       System.out.println("##### /vacation/registerVacation  called #####");
+
+      ///// TODO: remote call without using FeignClient
+      CalendarReadModelSingleQuery q = new CalendarReadModelSingleQuery();
+      q.setUserId(registerVacationCommand.getUserId());
+      queryGateway.query(q, ResponseTypes.optionalInstanceOf(CalendarReadModel.class)).get().
+      ifPresent(calendar ->{
+            System.out.println(calendar.getUserId());
+      });
 
       // send command
       return commandGateway.send(registerVacationCommand)            

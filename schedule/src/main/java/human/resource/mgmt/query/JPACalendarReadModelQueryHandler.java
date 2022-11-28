@@ -47,7 +47,7 @@ public class JPACalendarReadModelQueryHandler {
     @EventHandler
     public void whenVacationRegistered_then_UPDATE_1( VacationRegisteredEvent vacationRegistered) throws Exception{
         // view 객체 조회
-        Optional<CalendarReadModel> calendarReadModelOptional = calendarReadModelRepository.findById(vacationRegistered.getUserId());
+        Optional<CalendarReadModel> calendarReadModelOptional = calendarReadModelRepository.findById(vacationRegistered.getUserId()+"_cal");
 
         if( calendarReadModelOptional.isPresent()) {
             CalendarReadModel calendarReadModel = calendarReadModelOptional.get();
@@ -59,20 +59,20 @@ public class JPACalendarReadModelQueryHandler {
         }
     }
 
-    @EventHandler
-    public void whenVacationCancelled_then_UPDATE_2( VacationCancelledEvent vacationCancelled) throws Exception{
-        // view 객체 조회
-        Optional<CalendarReadModel> calendarReadModelOptional = calendarReadModelRepository.findById(vacationCancelled.getUserId());
+    // @EventHandler
+    // public void whenVacationCancelled_then_UPDATE_2( VacationCancelledEvent vacationCancelled) throws Exception{
+    //     // view 객체 조회
+    //     Optional<CalendarReadModel> calendarReadModelOptional = calendarReadModelRepository.findById(vacationCancelled.getUserId());
 
-        if( calendarReadModelOptional.isPresent()) {
-                CalendarReadModel calendarReadModel = calendarReadModelOptional.get();
-        // view 객체에 이벤트의 eventDirectValue 를 set 함
-            calendarReadModel.setScheduleData(calendarReadModel.getScheduleData() - vacationCancelled.getReason());
-            // view 레파지 토리에 save
-                calendarReadModelRepository.save(calendarReadModel);
-            }
+    //     if( calendarReadModelOptional.isPresent()) {
+    //             CalendarReadModel calendarReadModel = calendarReadModelOptional.get();
+    //     // view 객체에 이벤트의 eventDirectValue 를 set 함
+    //         calendarReadModel.setScheduleData(calendarReadModel.getScheduleData() - vacationCancelled.getReason());
+    //         // view 레파지 토리에 save
+    //             calendarReadModelRepository.save(calendarReadModel);
+    //         }
 
-    }
+    // }
 
 
 }
