@@ -44,25 +44,25 @@ public class JPACalendarReadModelQueryHandler {
             calendarReadModelRepository.save(calendarReadModel);
     }
 
-
     @EventHandler
     public void whenVacationRegistered_then_UPDATE_1( VacationRegisteredEvent vacationRegistered) throws Exception{
         // view 객체 조회
-        Optional<CalendarReadModel> calendarReadModelOptional = calendarReadModelRepository.findByUserId(vacationRegistered.getUserId());
+        Optional<CalendarReadModel> calendarReadModelOptional = calendarReadModelRepository.findById(vacationRegistered.getUserId());
 
         if( calendarReadModelOptional.isPresent()) {
-                CalendarReadModel calendarReadModel = calendarReadModelOptional.get();
-        // view 객체에 이벤트의 eventDirectValue 를 set 함
+            CalendarReadModel calendarReadModel = calendarReadModelOptional.get();
+            // view 객체에 이벤트의 eventDirectValue 를 set 함  //TODO: Value Object 의 뭔가의 동사를 만들어야... 
+            
             calendarReadModel.setScheduleData(calendarReadModel.getScheduleData() + vacationRegistered.getReason());
             // view 레파지 토리에 save
-                calendarReadModelRepository.save(calendarReadModel);
-            }
-
+            calendarReadModelRepository.save(calendarReadModel);
+        }
     }
+
     @EventHandler
     public void whenVacationCancelled_then_UPDATE_2( VacationCancelledEvent vacationCancelled) throws Exception{
         // view 객체 조회
-        Optional<CalendarReadModel> calendarReadModelOptional = calendarReadModelRepository.findByUserId(vacationCancelled.getUserId());
+        Optional<CalendarReadModel> calendarReadModelOptional = calendarReadModelRepository.findById(vacationCancelled.getUserId());
 
         if( calendarReadModelOptional.isPresent()) {
                 CalendarReadModel calendarReadModel = calendarReadModelOptional.get();
