@@ -34,6 +34,7 @@ public class PolicyHandler{
         UseCommand command = new UseCommand();
         command.setUserId(vacationRegistered.getUserId());
         command.setDayCount(vacationRegistered.getDays());
+        command.setReason(vacationRegistered.getReason());
         commandGateway.send(command);
     }
 
@@ -44,6 +45,7 @@ public class PolicyHandler{
         AddCommand command = new AddCommand();
         command.setUserId(vacationCancelled.getUserId());
         command.setDayCount(vacationCancelled.getDays());
+        command.setReason(vacationCancelled.getReason());
         commandGateway.send(command);
     }
 
@@ -54,6 +56,7 @@ public class PolicyHandler{
         AddCommand command = new AddCommand();
         command.setUserId(vacationRejected.getUserId());
         command.setDayCount(vacationRejected.getDays());
+        command.setReason(vacationRejected.getReason());
         commandGateway.send(command);
     }
 
@@ -65,6 +68,7 @@ public class PolicyHandler{
         RegisterUserCommand command = new RegisterUserCommand();
         command.setUserId(employeeJoined.getUserId());
         command.setDayCount(10);
+
         commandGateway.send(command);
     }
 

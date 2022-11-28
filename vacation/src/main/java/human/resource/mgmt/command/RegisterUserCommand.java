@@ -12,7 +12,8 @@ import lombok.ToString;
 public class RegisterUserCommand {
 
 
-        private String userId;  // Please comment here if you want user to enter the id directly
+        @TargetAggregateIdentifier //TODO: Please uncomment here if you want user to enter the id directly
+        private String userId;  
         private Integer dayCount;
 
 }

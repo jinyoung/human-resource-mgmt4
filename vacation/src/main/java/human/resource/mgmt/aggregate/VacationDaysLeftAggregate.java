@@ -7,7 +7,6 @@ import static org.axonframework.modelling.command.AggregateLifecycle.*;
 import org.axonframework.spring.stereotype.Aggregate;
 
 import org.springframework.beans.BeanUtils;
-import java.util.List;
 
 import lombok.Data;
 import lombok.ToString;
@@ -55,7 +54,8 @@ public class VacationDaysLeftAggregate {
     public VacationDaysLeftAggregate(RegisterUserCommand command){
 
         VacationDaysIntializedEvent event = new VacationDaysIntializedEvent();
-        BeanUtils.copyProperties(command, event);     
+        BeanUtils.copyProperties(command, event);  
+        event.setUserId(command.getUserId() + "_");
 
                 //Please uncomment here and implement the createUUID method.
         //event.setId(createUUID());
