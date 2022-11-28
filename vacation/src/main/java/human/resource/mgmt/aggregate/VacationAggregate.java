@@ -39,8 +39,9 @@ public class VacationAggregate {
     public VacationAggregate(RegisterVacationCommand command){
 
         //pre condition.
-        if(command.getUserId()!=null || command.getDays()!=null) 
-            throw new IllegalArgumentException("Invalid vacation request.");
+        assert(command.getUserId()!=null);
+        assert(command.getDays()!=null); 
+//            throw new IllegalArgumentException("Invalid vacation request.");
 
         VacationRegisteredEvent event = new VacationRegisteredEvent();
         BeanUtils.copyProperties(command, event);     
@@ -60,7 +61,8 @@ public class VacationAggregate {
     public void handle(CancelCommand command){
 
         VacationCancelledEvent event = new VacationCancelledEvent();
-        BeanUtils.copyProperties(command, event);     
+        //TODO
+        BeanUtils.copyProperties(this, event);     
 
 
         apply(event);
@@ -75,14 +77,14 @@ public class VacationAggregate {
 
         if(command.getApprove()){
             VacationApprovedEvent event = new VacationApprovedEvent();
-            BeanUtils.copyProperties(command, event);     
+            BeanUtils.copyProperties(this, event);     
     
             //setStatus("APPROVED"); // 휘발 - 무의미
             apply(event);
     
         }else{
             VacationRejectedEvent event = new VacationRejectedEvent();
-            BeanUtils.copyProperties(command, event);     
+            BeanUtils.copyProperties(this, event);     
     
             apply(event);
     
@@ -93,7 +95,7 @@ public class VacationAggregate {
     public void handle(ConfirmUsedCommand command){
 
         VacationUsedEvent event = new VacationUsedEvent();
-        BeanUtils.copyProperties(command, event);     
+        BeanUtils.copyProperties(this, event);     
 
 
         apply(event);

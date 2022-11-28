@@ -52,6 +52,8 @@ public class PolicyHandler{
         System.out.println(vacationRejected.toString());
 
         AddCommand command = new AddCommand();
+        command.setUserId(vacationRejected.getUserId());
+        command.setDayCount(vacationRejected.getDays());
         commandGateway.send(command);
     }
 
@@ -61,6 +63,8 @@ public class PolicyHandler{
         System.out.println(employeeJoined.toString());
 
         RegisterUserCommand command = new RegisterUserCommand();
+        command.setUserId(employeeJoined.getUserId());
+        command.setDayCount(10);
         commandGateway.send(command);
     }
 
