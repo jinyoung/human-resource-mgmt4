@@ -72,6 +72,7 @@
                     { text: "reason", value: "reason" },
                     { text: "userId", value: "userId" },
                     { text: "days", value: "days" },
+                    { text: "status", value: "status" },
                 ],
             vacation : [],
             newValue: {},
@@ -94,6 +95,7 @@
                 'reason': '',
                 'userId': '',
                 'days': 0,
+                'status': '',
             }
         },
         methods: {

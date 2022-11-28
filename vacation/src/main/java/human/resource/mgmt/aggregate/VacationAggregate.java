@@ -31,6 +31,7 @@ public class VacationAggregate {
     private String reason;
     private String userId;
     private Integer days;
+    private String status;
 
     public VacationAggregate(){}
 
