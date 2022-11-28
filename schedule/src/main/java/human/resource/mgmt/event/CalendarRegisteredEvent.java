@@ -12,6 +12,6 @@ import lombok.ToString;
 public class CalendarRegisteredEvent {
 
     private String userId;
-    private List&lt;Schedule&gt; schedules;
+    private String title;
 
 }
