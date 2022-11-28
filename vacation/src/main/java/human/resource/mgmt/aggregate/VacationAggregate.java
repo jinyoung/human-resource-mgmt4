@@ -38,14 +38,22 @@ public class VacationAggregate {
     @CommandHandler
     public VacationAggregate(RegisterVacationCommand command){
 
+        //pre condition.
+        if(command.getUserId()!=null || command.getDays()!=null) 
+            throw new IllegalArgumentException("Invalid vacation request.");
+
         VacationRegisteredEvent event = new VacationRegisteredEvent();
         BeanUtils.copyProperties(command, event);     
 
-                //Please uncomment here and implement the createUUID method.
-        //event.setId(createUUID());
+        //Please uncomment here and implement the createUUID method.
+        event.setId(createUUID());
         
         apply(event);
 
+    }
+
+    private String createUUID() {
+        return java.util.UUID.randomUUID().toString();
     }
 
     @CommandHandler
@@ -61,19 +69,24 @@ public class VacationAggregate {
 
     @CommandHandler
     public void handle(ApproveCommand command){
+        if("USED".equals(getStatus())){ //참조는 의미가 있음.
+            throw new IllegalStateException("Already used vacation!");
+        }
 
-        VacationApprovedEvent event = new VacationApprovedEvent();
-        BeanUtils.copyProperties(command, event);     
-
-
-        apply(event);
-
-        VacationRejectedEvent event = new VacationRejectedEvent();
-        BeanUtils.copyProperties(command, event);     
-
-
-        apply(event);
-
+        if(command.getApprove()){
+            VacationApprovedEvent event = new VacationApprovedEvent();
+            BeanUtils.copyProperties(command, event);     
+    
+            //setStatus("APPROVED"); // 휘발 - 무의미
+            apply(event);
+    
+        }else{
+            VacationRejectedEvent event = new VacationRejectedEvent();
+            BeanUtils.copyProperties(command, event);     
+    
+            apply(event);
+    
+        }
     }
 
     @CommandHandler
@@ -112,21 +125,23 @@ public class VacationAggregate {
     @EventSourcingHandler
     public void on(VacationApprovedEvent event) {
        // BeanUtils.copyProperties(event, this);
-        
+        setStatus("APPROVED");
     }
 
 
     @EventSourcingHandler
     public void on(VacationRejectedEvent event) {
        // BeanUtils.copyProperties(event, this);
-        
+       setStatus("REJECTED");
+
     }
 
 
     @EventSourcingHandler
     public void on(VacationUsedEvent event) {
-        BeanUtils.copyProperties(event, this);
-        
+        //BeanUtils.copyProperties(event, this);
+        setStatus("USED");
+
     }
 
 
