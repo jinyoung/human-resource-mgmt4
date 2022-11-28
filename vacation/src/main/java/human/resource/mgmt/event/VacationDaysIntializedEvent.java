@@ -12,6 +12,5 @@ public class VacationDaysIntializedEvent {
 
     private String userId;
     private Integer dayCount;
-    private String reason;
 
 }
