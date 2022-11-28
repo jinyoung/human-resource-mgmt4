@@ -15,5 +15,7 @@ public class VacationRejectedEvent {
     private Date startDate;
     private Date endDate;
     private String reason;
+    private String userId;
+    private Integer days;
 
 }

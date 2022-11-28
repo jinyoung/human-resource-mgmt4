@@ -17,5 +17,6 @@ public class VacationCancelledEvent {
     private Date endDate;
     private String reason;
     private String userId;
+    private Integer days;
 
 }
