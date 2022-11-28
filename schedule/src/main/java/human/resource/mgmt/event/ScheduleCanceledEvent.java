@@ -12,7 +12,6 @@ import java.util.Date;
 @ToString
 public class ScheduleCanceledEvent {
 
-    private Long id;
     private String title;
     private Date date;
 

@@ -25,7 +25,6 @@ public class CalendarAggregate {
 
     @AggregateIdentifier
     private String userId;
-    private List&lt;Schedule&gt; schedules;
 
     public CalendarAggregate(){}
 

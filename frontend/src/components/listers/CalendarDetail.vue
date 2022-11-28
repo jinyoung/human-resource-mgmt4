@@ -8,7 +8,6 @@
             <div>
                 <String label="UserId" v-model="item.userId" :editMode="editMode" @change="change" />
             </div>
-            <ScheduleManager offline label="Schedules" v-model="item.schedules" :editMode="false" @change="change" />
         </v-card-text>
 
         <v-card-actions>
