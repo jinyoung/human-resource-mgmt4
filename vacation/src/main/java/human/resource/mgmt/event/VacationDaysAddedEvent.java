@@ -11,7 +11,6 @@ import lombok.ToString;
 @ToString
 public class VacationDaysAddedEvent {
 
-    private Long id;
     private String userId;
     private Integer dayCount;
 

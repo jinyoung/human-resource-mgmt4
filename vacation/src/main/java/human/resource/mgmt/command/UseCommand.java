@@ -16,5 +16,6 @@ public class UseCommand {
     private String userId;
 
         private Integer dayCount;
+        private String reason;
 
 }

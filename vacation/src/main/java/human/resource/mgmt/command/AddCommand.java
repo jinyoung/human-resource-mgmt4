@@ -16,5 +16,6 @@ public class AddCommand {
     private String userId;
 
         private Integer dayCount;
+        private String reason;
 
 }
