@@ -48,11 +48,10 @@ pluralCaseList.push( {plural: "vacations", pascal: "Vacation"} )
 pluralCaseList.push( {plural: "vacationDaysLefts", pascal: "VacationDaysLeft"} )
 
 pluralCaseList.push( {plural: "vacationStatuses", pascal: "VacationStatus"} )
-pluralCaseList.push( {plural: "schedules", pascal: "Schedule"} )
 pluralCaseList.push( {plural: "vacationDaysStatuses", pascal: "VacationDaysStatus"} )
 pluralCaseList.push( {plural: "calendars", pascal: "Calendar"} )
 
-pluralCaseList.push( {plural: "calendarReadModels", pascal: "CalendarReadModel"} )
+pluralCaseList.push( {plural: "getSchedules", pascal: "GetSchedule"} )
 pluralCaseList.push( {plural: "employees", pascal: "Employee"} )
 
 

@@ -73,16 +73,6 @@
                     </v-list-item>
                     <v-list-item
                         class="px-2"
-                        key="schedules"
-                        to="schedules"
-                        @click="changeUrl()"
-                        color="deep-purple lighten-2"
-                        style="font-weight:700;"
-                    >
-                        Schedule
-                    </v-list-item>
-                    <v-list-item
-                        class="px-2"
                         key="vacationDaysStatuses"
                         to="vacationDaysStatuses"
                         @click="changeUrl()"
@@ -106,13 +96,13 @@
 
                     <v-list-item
                         class="px-2"
-                        key="calendarReadModels"
-                        to="calendarReadModels"
+                        key="getSchedules"
+                        to="getSchedules"
                         @click="changeUrl()"
                         color="deep-purple lighten-2"
                         style="font-weight:700;"
                     >
-                        CalendarReadModel
+                        GetSchedule
                     </v-list-item>
 
                     <v-list-item
@@ -258,35 +248,6 @@
                                     class="mx-auto"
                                     outlined
                                     rounded
-                                    key="schedules"
-                                    to="/schedules"
-                                    @click="changeUrl()"
-                                    color="deep-purple lighten-2"
-                                    style="font-weight:500; font-size:20px; padding:15px;"
-                                >
-                                    Schedule
-                                </v-btn>
-                            </v-card-actions>
-                        </v-card>
-                        <v-card
-                            class="mx-auto"
-                            style="height:300px; width:300px; margin-bottom:20px;"
-                            outlined
-                        >
-                            <v-list-item>
-                                <v-list-item-avatar 
-                                    class="mx-auto"
-                                    size="80"
-                                    style="margin-top:80px;"
-                                ><span class="mdi mdi-apps" style="font-size:60px; color:#9575CD;"></span>
-                                </v-list-item-avatar>
-                            </v-list-item>
-
-                            <v-card-actions>
-                                <v-btn 
-                                    class="mx-auto"
-                                    outlined
-                                    rounded
                                     key="vacationDaysStatuses"
                                     to="/vacationDaysStatuses"
                                     @click="changeUrl()"
@@ -352,13 +313,13 @@
                                     class="mx-auto"
                                     outlined
                                     rounded
-                                    key="calendarReadModels"
-                                    to="/calendarReadModels"
+                                    key="getSchedules"
+                                    to="/getSchedules"
                                     @click="changeUrl()"
                                     color="deep-purple lighten-2"
                                     style="font-weight:500; font-size:20px; padding:15px;"
                                 >
-                                    CalendarReadModel
+                                    GetSchedule
                                 </v-btn>
                             </v-card-actions>
                         </v-card>

@@ -12,15 +12,13 @@ import VacationDaysLeftDetail from "./components/listers/VacationDaysLeftDetail"
 
 import VacationStatusView from "./components/VacationStatusView"
 import VacationStatusViewDetail from "./components/VacationStatusViewDetail"
-import ScheduleView from "./components/ScheduleView"
-import ScheduleViewDetail from "./components/ScheduleViewDetail"
 import VacationDaysStatusView from "./components/VacationDaysStatusView"
 import VacationDaysStatusViewDetail from "./components/VacationDaysStatusViewDetail"
 import CalendarManager from "./components/listers/CalendarCards"
 import CalendarDetail from "./components/listers/CalendarDetail"
 
-import CalendarReadModelView from "./components/CalendarReadModelView"
-import CalendarReadModelViewDetail from "./components/CalendarReadModelViewDetail"
+import GetScheduleView from "./components/GetScheduleView"
+import GetScheduleViewDetail from "./components/GetScheduleViewDetail"
 import EmployeeManager from "./components/listers/EmployeeCards"
 import EmployeeDetail from "./components/listers/EmployeeDetail"
 
@@ -61,16 +59,6 @@ export default new Router({
                 component: VacationStatusViewDetail
             },
             {
-                path: '/schedules',
-                name: 'ScheduleView',
-                component: ScheduleView
-            },
-            {
-                path: '/schedules/:id',
-                name: 'ScheduleViewDetail',
-                component: ScheduleViewDetail
-            },
-            {
                 path: '/vacationDaysStatuses',
                 name: 'VacationDaysStatusView',
                 component: VacationDaysStatusView
@@ -92,14 +80,14 @@ export default new Router({
             },
 
             {
-                path: '/calendarReadModels',
-                name: 'CalendarReadModelView',
-                component: CalendarReadModelView
+                path: '/getSchedules',
+                name: 'GetScheduleView',
+                component: GetScheduleView
             },
             {
-                path: '/calendarReadModels/:id',
-                name: 'CalendarReadModelViewDetail',
-                component: CalendarReadModelViewDetail
+                path: '/getSchedules/:id',
+                name: 'GetScheduleViewDetail',
+                component: GetScheduleViewDetail
             },
             {
                 path: '/employees',

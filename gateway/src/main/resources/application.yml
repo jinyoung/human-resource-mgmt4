@@ -11,11 +11,11 @@ spring:
         - id: vacation
           uri: http://localhost:8081
           predicates:
-            - Path=/vacations/**, /vacationDaysLefts/**, /vacationStatuses/**, /schedules/**, /vacationDaysStatuses/**
+            - Path=/vacations/**, /vacationDaysLefts/**, /vacationStatuses/**, /vacationDaysStatuses/**
         - id: schedule
           uri: http://localhost:8082
           predicates:
-            - Path=/calendars/**, /calendarReadModels/**
+            - Path=/calendars/**, /getSchedules/**
         - id: employee
           uri: http://localhost:8083
           predicates:
@@ -46,11 +46,11 @@ spring:
         - id: vacation
           uri: http://vacation:8080
           predicates:
-            - Path=/vacations/**, /vacationDaysLefts/**, /vacationStatuses/**, /schedules/**, /vacationDaysStatuses/**
+            - Path=/vacations/**, /vacationDaysLefts/**, /vacationStatuses/**, /vacationDaysStatuses/**
         - id: schedule
           uri: http://schedule:8080
           predicates:
-            - Path=/calendars/**, /calendarReadModels/**
+            - Path=/calendars/**, /getSchedules/**
         - id: employee
           uri: http://employee:8080
           predicates:
