@@ -5,5 +5,5 @@ import lombok.Data;
 @Data
 public class GetScheduleSingleQuery {
 
-    private Long id;
+    private String userId;
 }

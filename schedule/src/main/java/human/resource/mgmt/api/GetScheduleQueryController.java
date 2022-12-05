@@ -23,15 +23,15 @@ public class GetScheduleQueryController {
         this.queryGateway = queryGateway;
     }
 
-    @GetMapping("/getSchedules")
+    @GetMapping("/calendars")
     public CompletableFuture findAll() {
         return queryGateway
             .query(
                 new GetScheduleQuery(),
-                ResponseTypes.multipleInstancesOf(GetSchedule.class)
+                ResponseTypes.multipleInstancesOf(CalendarReadModel.class)
             )
             .thenApply(resources -> {
-                CollectionModel<GetSchedule> model = CollectionModel.of(
+                CollectionModel<CalendarReadModel> model = CollectionModel.of(
                     resources
                 );
 
@@ -39,22 +39,27 @@ public class GetScheduleQueryController {
             });
     }
 
-    @GetMapping("/getSchedules/{id}")
-    public CompletableFuture findById(@PathVariable("id") Long id) {
+    @GetMapping("/calendars/{id}")
+    public CompletableFuture findById(@PathVariable("id") String id) {
         GetScheduleSingleQuery query = new GetScheduleSingleQuery();
-        query.setId(id);
+        query.setUserId(id);
 
         return queryGateway
-            .query(query, ResponseTypes.optionalInstanceOf(GetSchedule.class))
+            .query(
+                query,
+                ResponseTypes.optionalInstanceOf(CalendarReadModel.class)
+            )
             .thenApply(resource -> {
                 if (!resource.isPresent()) {
                     return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
                 }
 
-                EntityModel<GetSchedule> model = EntityModel.of(resource.get());
+                EntityModel<CalendarReadModel> model = EntityModel.of(
+                    resource.get()
+                );
                 model.add(
                     Link
-                        .of("/getSchedules/" + resource.get().getId())
+                        .of("/calendars/" + resource.get().getUserId())
                         .withSelfRel()
                 );
 
