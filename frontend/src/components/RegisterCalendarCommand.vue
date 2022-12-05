@@ -2,7 +2,7 @@
 
     <v-card outlined>
         <v-card-title>
-            Register
+            RegisterCalendar
         </v-card-title>
 
         <v-card-text>
@@ -13,9 +13,9 @@
             <v-btn
                     color="deep-purple lighten-2"
                     text
-                    @click="register"
+                    @click="registerCalendar"
             >
-                Register
+                RegisterCalendar
             </v-btn>
             
             <v-btn
@@ -33,7 +33,7 @@
 <script>
    
     export default {
-        name: 'RegisterCommand',
+        name: 'RegisterCalendarCommand',
         components:{},
         props: {},
         data: () => ({
@@ -45,8 +45,8 @@
         watch: {
         },
         methods: {
-            register() {
-                this.$emit('register', this.value);
+            registerCalendar() {
+                this.$emit('registerCalendar', this.value);
             },
             close() {
                 this.$emit('closeDialog');

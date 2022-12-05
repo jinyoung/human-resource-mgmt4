@@ -11,6 +11,8 @@ import lombok.Data;
 public class CalendarReadModel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private String userId;
+
+    @ElementCollection
+    private List<Event> events;
 }

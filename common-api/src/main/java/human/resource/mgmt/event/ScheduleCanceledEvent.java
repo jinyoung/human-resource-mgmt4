@@ -10,4 +10,5 @@ public class ScheduleCanceledEvent {
 
     private String title;
     private Date date;
+    private String userId;
 }

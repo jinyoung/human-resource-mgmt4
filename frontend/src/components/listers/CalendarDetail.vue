@@ -8,6 +8,7 @@
             <div>
                 <String label="UserId" v-model="item.userId" :editMode="editMode" @change="change" />
             </div>
+            <EventManager offline label="Events" v-model="item.events" :editMode="false" @change="change" />
         </v-card-text>
 
         <v-card-actions>
