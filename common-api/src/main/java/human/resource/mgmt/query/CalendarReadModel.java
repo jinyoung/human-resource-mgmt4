@@ -8,9 +8,14 @@ import lombok.Data;
 @Entity
 @Table(name = "Calendar_table")
 @Data
+//<<< EDA / Read Model
+
 public class CalendarReadModel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private String userId;
+
+    @ElementCollection
+    private List<Event> events;
 }
+//>>> EDA / Read Model

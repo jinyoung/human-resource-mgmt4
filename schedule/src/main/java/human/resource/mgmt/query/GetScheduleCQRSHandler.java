@@ -40,7 +40,7 @@ public class GetScheduleCQRSHandler {
 
     @EventHandler
     public void whenScheduleAdded_then_UPDATE (ScheduleAddedEvent event) throws Exception{
-        repository.findById(event.get())
+        repository.findById(event.getUserId())
             .ifPresent(entity -> {
 
                 CalendarAggregate aggregate = new CalendarAggregate();
@@ -55,22 +55,22 @@ public class GetScheduleCQRSHandler {
 
     }
 
-    @EventHandler
-    public void whenScheduleCanceled_then_UPDATE (ScheduleCanceledEvent event) throws Exception{
-        repository.findById(event.get())
-            .ifPresent(entity -> {
+    // @EventHandler
+    // public void whenScheduleCanceled_then_UPDATE (ScheduleCanceledEvent event) throws Exception{
+    //     repository.findById(event.getUserId())
+    //         .ifPresent(entity -> {
 
-                CalendarAggregate aggregate = new CalendarAggregate();
+    //             CalendarAggregate aggregate = new CalendarAggregate();
        
-                BeanUtils.copyProperties(entity, aggregate);
-                aggregate.on(event);
-                BeanUtils.copyProperties(aggregate, entity);
+    //             BeanUtils.copyProperties(entity, aggregate);
+    //             aggregate.on(event);
+    //             BeanUtils.copyProperties(aggregate, entity);
 
-                repository.save(entity);
+    //             repository.save(entity);
 
-            });
+    //         });
 
-    }
+    // }
     @EventHandler
     public void whenCalendarRegistered_then_CREATE (CalendarRegisteredEvent event) throws Exception{
         CalendarReadModel entity = new CalendarReadModel();
