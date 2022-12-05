@@ -6,7 +6,8 @@ import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
 @ToString
 @Data
-public class RegisterCommand {
+public class CancelCalendarCommand {
 
-    private String userId; // Please comment here if you want user to enter the id directly
+    @TargetAggregateIdentifier
+    private String userId;
 }

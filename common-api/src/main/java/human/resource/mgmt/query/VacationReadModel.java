@@ -11,7 +11,6 @@ import lombok.Data;
 public class VacationReadModel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
 
     private Date startDate;

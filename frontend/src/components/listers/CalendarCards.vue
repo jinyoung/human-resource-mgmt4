@@ -69,6 +69,7 @@
             
             me.newValue = {
                 'userId': '',
+                'events': [],
             }
         },
         methods:{

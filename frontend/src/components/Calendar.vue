@@ -18,6 +18,7 @@
 
         <v-card-text>
             <String label="UserId" v-model="value.userId" :editMode="editMode"/>
+            <EventManager offline label="Events" v-model="value.events" :editMode="editMode" @change="change"/>
         </v-card-text>
 
         <v-card-actions>
@@ -36,7 +37,7 @@
                     @click="save"
                     v-else
             >
-                Register
+                RegisterCalendar
             </v-btn>
             <v-btn
                     color="deep-purple lighten-2"
@@ -61,23 +62,23 @@
                     v-if="!editMode"
                     color="deep-purple lighten-2"
                     text
-                    @click="openAdd"
+                    @click="openAddCalendar"
             >
-                Add
+                AddCalendar
             </v-btn>
-            <v-dialog v-model="addDiagram" width="500">
-                <AddCommand
-                        @closeDialog="closeAdd"
-                        @add="add"
-                ></AddCommand>
+            <v-dialog v-model="addCalendarDiagram" width="500">
+                <AddCalendarCommand
+                        @closeDialog="closeAddCalendar"
+                        @addCalendar="addCalendar"
+                ></AddCalendarCommand>
             </v-dialog>
             <v-btn
                     v-if="!editMode"
                     color="deep-purple lighten-2"
                     text
-                    @click="cancel"
+                    @click="cancelCalendar"
             >
-                Cancel
+                CancelCalendar
             </v-btn>
         </v-card-actions>
 
@@ -116,7 +117,7 @@
                 timeout: 5000,
                 text: ''
             },
-            addDiagram: false,
+            addCalendarDiagram: false,
         }),
         computed:{
         },
@@ -211,7 +212,7 @@
             change(){
                 this.$emit('input', this.value);
             },
-            async add(params) {
+            async addCalendar(params) {
                 try {
                     if(!this.offline) {
                         var temp = await axios.put(axios.fixUrl(this.value._links['add'].href), params)
@@ -221,7 +222,7 @@
                     }
 
                     this.editMode = false;
-                    this.closeAdd();
+                    this.closeAddCalendar();
                 } catch(e) {
                     this.snackbar.status = true
                     if(e.response && e.response.data.message) {
@@ -231,16 +232,54 @@
                     }
                 }
             },
-            openAdd() {
-                this.addDiagram = true;
+            openAddCalendar() {
+                this.addCalendarDiagram = true;
             },
-            closeAdd() {
-                this.addDiagram = false;
+            closeAddCalendar() {
+                this.addCalendarDiagram = false;
             },
-            async cancel() {
+            async cancelCalendar() {
                 try {
                     if(!this.offline) {
                         var temp = await axios.put(axios.fixUrl(this.value._links['cancel'].href))
+                        for(var k in temp.data) {
+                            this.value[k]=temp.data[k];
+                        }
+                    }
+
+                    this.editMode = false;
+                } catch(e) {
+                    this.snackbar.status = true
+                    if(e.response && e.response.data.message) {
+                        this.snackbar.text = e.response.data.message
+                    } else {
+                        this.snackbar.text = e
+                    }
+                }
+            },
+            async () {
+                try {
+                    if(!this.offline) {
+                        var temp = await axios.put(axios.fixUrl(this.value._links[''].href))
+                        for(var k in temp.data) {
+                            this.value[k]=temp.data[k];
+                        }
+                    }
+
+                    this.editMode = false;
+                } catch(e) {
+                    this.snackbar.status = true
+                    if(e.response && e.response.data.message) {
+                        this.snackbar.text = e.response.data.message
+                    } else {
+                        this.snackbar.text = e
+                    }
+                }
+            },
+            async () {
+                try {
+                    if(!this.offline) {
+                        var temp = await axios.put(axios.fixUrl(this.value._links[''].href))
                         for(var k in temp.data) {
                             this.value[k]=temp.data[k];
                         }

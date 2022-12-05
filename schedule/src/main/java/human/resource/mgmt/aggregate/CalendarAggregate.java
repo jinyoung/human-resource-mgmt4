@@ -4,9 +4,6 @@ import static org.axonframework.modelling.command.AggregateLifecycle.*;
 
 import human.resource.mgmt.command.*;
 import human.resource.mgmt.event.*;
-import human.resource.mgmt.query.*;
-
-import java.util.ArrayList;
 import java.util.List;
 import lombok.Data;
 import lombok.ToString;
@@ -15,6 +12,9 @@ import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
 import org.axonframework.spring.stereotype.Aggregate;
 import org.springframework.beans.BeanUtils;
+
+import java.util.ArrayList;
+
 
 //<<< DDD / Aggregate Root
 @Aggregate
@@ -30,16 +30,15 @@ public class CalendarAggregate {
     public CalendarAggregate() {}
 
     @CommandHandler
-    public void handle(AddCommand command) {
+    public void handle(AddCalendarCommand command) {
         ScheduleAddedEvent event = new ScheduleAddedEvent();
         BeanUtils.copyProperties(command, event);
-        event.setTitle("testssss");
 
         apply(event);
     }
 
     @CommandHandler
-    public void handle(CancelCommand command) {
+    public void handle(CancelCalendarCommand command) {
         ScheduleCanceledEvent event = new ScheduleCanceledEvent();
         BeanUtils.copyProperties(command, event);
 
@@ -47,14 +46,12 @@ public class CalendarAggregate {
     }
 
     @CommandHandler
-    public CalendarAggregate(RegisterCommand command) {
+    public CalendarAggregate(RegisterCalendarCommand command) {
         CalendarRegisteredEvent event = new CalendarRegisteredEvent();
         BeanUtils.copyProperties(command, event);
 
-        //<<< Etc / ID Generation
         //Please uncomment here and implement the createUUID method.
         //event.setId(createUUID());
-        //>>> Etc / ID Generation
 
         apply(event);
     }
