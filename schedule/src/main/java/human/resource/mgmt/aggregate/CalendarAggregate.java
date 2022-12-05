@@ -4,6 +4,8 @@ import static org.axonframework.modelling.command.AggregateLifecycle.*;
 
 import human.resource.mgmt.command.*;
 import human.resource.mgmt.event.*;
+import human.resource.mgmt.query.*;
+
 import java.util.List;
 import lombok.Data;
 import lombok.ToString;
@@ -14,7 +16,6 @@ import org.axonframework.spring.stereotype.Aggregate;
 import org.springframework.beans.BeanUtils;
 
 import java.util.ArrayList;
-
 
 //<<< DDD / Aggregate Root
 @Aggregate
