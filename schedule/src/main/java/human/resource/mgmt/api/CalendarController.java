@@ -2,6 +2,8 @@ package human.resource.mgmt.api;
 
 import human.resource.mgmt.aggregate.*;
 import human.resource.mgmt.command.*;
+import human.resource.mgmt.query.GetScheduleQuery;
+
 import java.util.ArrayList;
 import java.util.concurrent.CompletableFuture;
 import org.axonframework.commandhandling.gateway.CommandGateway;
@@ -104,5 +106,11 @@ public class CalendarController {
         );
 
         return new ResponseEntity<>(model, HttpStatus.OK);
+    }
+
+    @GetMapping(value="/calendars/search/findByDateRange")
+    public ResponseEntity findByDateRange(GetScheduleQuery query) {
+        
+        return new ResponseEntity<>(null, HttpStatus.OK);
     }
 }
